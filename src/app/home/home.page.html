@@ -1,0 +1,39 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title id="top-title">
+      E-Sport
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Blank</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container">
+      <div class="shortcut-container">
+        <ion-button expand="block" routerLink="/who-we-are" id="shortcuts">
+          <ion-icon name="people" slot="start"></ion-icon>
+          <ion-label>Who We Are</ion-label>
+        </ion-button>
+
+        <ion-button expand="block" routerLink="/what-we-play" id="shortcuts">
+          <ion-icon name="game-controller" slot="start"></ion-icon>
+          <ion-label>What We Play</ion-label>
+        </ion-button>
+
+        <ion-button expand="block" routerLink="/our-schedule" id="shortcuts">
+          <ion-icon name="calendar-clear" slot="start"></ion-icon>
+          <ion-label>Our Schedule</ion-label>
+        </ion-button>
+      </div>
+  </div>
+</ion-content>

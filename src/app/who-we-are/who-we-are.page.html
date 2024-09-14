@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title id="top-title">Who We Are</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div id="content">
+    <div id="image-container">
+      <img id="team-image" src="assets/img/team-image.png">
+    </div>
+    <div id="text-container">
+      <ion-label id="text-title">Who We Are</ion-label>
+      <p id="text-content">
+        Ginjal Jantung Empedu is a team of sick gamers willing to put their health at risk for the sake of winning.
+      </p>
+    </div>
+    <div id="like-container">
+      <ion-button (click)="clickLike()">
+        <ion-label>
+          {{likes}}
+        </ion-label>
+        <ion-icon name="heart" slot="start"></ion-icon>
+      </ion-button>
+    </div>
+  </div>
+</ion-content>
