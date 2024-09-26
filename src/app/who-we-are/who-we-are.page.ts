@@ -7,12 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WhoWeArePage implements OnInit {
   likes = 0;
+  isLiked = false;
   constructor() { }
 
   ngOnInit() {
   }
 
   clickLike(){
-    this.likes++;
+    if(this.isLiked == false){
+      this.likes++;
+      this.isLiked = true;
+    }
+    else{
+      this.isLiked = false;
+      this.likes--;
+    }
   }
 }
