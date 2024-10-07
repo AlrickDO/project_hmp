@@ -9,16 +9,19 @@
 
 <ion-content [fullscreen]="true">
   <div id="content">
-    <ion-card *ngFor="let game of games">
-      <img [src]="game.image" />
-      <ion-card-header>
-        <ion-card-title>{{ game.name }}</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        {{ game.description }}
-      </ion-card-content>
-      <ion-button expand="block" >Achievements</ion-button>
-      <ion-button expand="block" color="secondary">Teams</ion-button>
-    </ion-card>
+    <div id="card-group">
+      <ion-card *ngFor="let game of game_list; let i = index">
+        <img [src]="game.image" />
+        <ion-card-header>
+          <ion-card-title>{{ game.name }}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          {{ game.description }}
+        </ion-card-content>
+        <ion-button routerLink="/achievement/{{i}}" expand="block">Achievements</ion-button>
+        <ion-button routerLink="/teams/{{i}}" expand="block" color="secondary">Teams</ion-button>
+        <!-- ini masih belum bisa ditekan. (mungkin error di index) -->
+      </ion-card>
+    </div>
   </div>
 </ion-content>

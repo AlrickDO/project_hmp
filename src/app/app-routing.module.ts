@@ -23,6 +23,14 @@ const routes: Routes = [
     path: 'our-schedule',
     loadChildren: () => import('./our-schedule/our-schedule.module').then( m => m.OurSchedulePageModule)
   },
+  {
+    path: 'achievement',
+    loadChildren: () => import('./achievement/achievement.module').then( m => m.AchievementPageModule)
+  },
+  {
+    path: 'teams',
+    loadChildren: () => import('./teams/teams.module').then( m => m.TeamsPageModule)
+  },
 ];
 
 @NgModule({
