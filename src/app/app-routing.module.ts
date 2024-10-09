@@ -24,11 +24,11 @@ const routes: Routes = [
     loadChildren: () => import('./our-schedule/our-schedule.module').then( m => m.OurSchedulePageModule)
   },
   {
-    path: 'achievement',
+    path: 'achievement/:index',
     loadChildren: () => import('./achievement/achievement.module').then( m => m.AchievementPageModule)
   },
   {
-    path: 'teams',
+    path: 'teams/:index',
     loadChildren: () => import('./teams/teams.module').then( m => m.TeamsPageModule)
   },
 ];
