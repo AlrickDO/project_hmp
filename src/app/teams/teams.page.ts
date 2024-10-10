@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 export class TeamsPage implements OnInit {
   index = 0
   game_list :any[]=[]
+  teams: any[]=[]
 
   constructor(private route: ActivatedRoute,private games : GamesService) { }
 
@@ -20,6 +21,7 @@ export class TeamsPage implements OnInit {
       }
     )
     this.game_list = this.games.games
+    this.teams = this.game_list[this.index].teams
   }
 
 }

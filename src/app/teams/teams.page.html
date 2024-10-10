@@ -9,9 +9,15 @@
 
 <ion-content [fullscreen]="true">
   <div id="container">
-    <ion-list lines="full">
+    <ion-item>
+      <ion-img [src]="game_list[index].image"></ion-img>
+    </ion-item>
+
+    <ion-list lines="full" *ngFor="let team of teams">
       <ion-item>
-        <ion-img [src]="game_list[index].image"></ion-img>
+        <ion-label class="ion-text-center">
+          {{team.name}}
+        </ion-label>
       </ion-item>
     </ion-list>
   </div>
