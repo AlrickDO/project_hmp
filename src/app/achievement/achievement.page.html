@@ -9,9 +9,24 @@
 
 <ion-content [fullscreen]="true">
   <div id="container">
-    <ion-list lines="full">
-      <ion-item>
-        <ion-img [src]="game_list[index].image"></ion-img>
+    <ion-item>
+      <ion-img [src]="game_list[index].image"></ion-img>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Year</ion-label>
+      <ion-select [(ngModel)]="selectedYear" placeholder="Select Year" (ionChange)="filterAchievements()">
+        <ion-select-option value="All">All</ion-select-option>
+        <ion-select-option *ngFor="let year of availableYears" [value]="year">{{year}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-list>
+      <ion-item *ngFor="let achievement of filteredAchievements">
+        <ion-label>
+          <h2>{{achievement.name}}</h2>
+          <p>{{achievement.team}} - {{achievement.year}}</p>
+        </ion-label>
       </ion-item>
     </ion-list>
   </div>
