@@ -36,11 +36,13 @@ export class GamesService {
         members: [{
           id: 1,
           name: 'Alrick',
-          image: 'assets/img/alrick.png'
+          image: 'assets/img/alrick.png',
+          role: "Carry"
         }, {
           id: 2,
           name: 'Jasmine',
-          image: 'assets/img/jasmine.png'
+          image: 'assets/img/jasmine.png',
+          role: "Support"
         }]
       }, {
         id: 2,
@@ -48,11 +50,13 @@ export class GamesService {
         members: [{
           id: 1,
           name: 'Syarif',
-          image: 'assets/img/syarif.png'
+          image: 'assets/img/syarif.png',
+          role: "Cannoneer"
         }, {
           id: 2,
           name: "Lina",
-          image: 'assets/img/lina.png'
+          image: 'assets/img/lina.png',
+          role: "Sailor"
         }]
       }, {
         id: 3,
@@ -60,11 +64,13 @@ export class GamesService {
         members: [{
           id: 1,
           name: "Patrick",
-          image: "assets/img/patrick.png"
+          image: "assets/img/patrick.png",
+          role: "Carry"
         }, {
           id: 2,
           name: "Mel",
-          image: "assets/img/mel.png"
+          image: "assets/img/mel.png",
+          role: "Support"
         }]
       }]
     },
@@ -97,11 +103,28 @@ export class GamesService {
         members: [{
           id: 1,
           name: 'Lucy',
-          image: 'assets/img/lucy.png'
+          image: 'assets/img/lucy.png',
+          role: "Captain"
         }, {
           id: 2,
           name: 'Ariel',
-          image: 'assets/img/ariel.png'
+          image: 'assets/img/ariel.png',
+          role: "Support"
+        },{
+          id: 3,
+          name: 'Ronaldo',
+          image: 'assets/img/ronaldo.png',
+          role: "Offlane"
+        },{
+          id: 4,
+          name: 'Armel',
+          image: 'assets/img/armel.png',
+          role: "Midlane"
+        },{
+          id: 5,
+          name: 'Luca',
+          image: 'assets/img/luca.png',
+          role: "Safe"
         }]
       }, {
         id: 2,
@@ -109,11 +132,28 @@ export class GamesService {
         members: [{
           id: 1,
           name: 'Cody',
-          image: 'assets/img/cody.png'
+          image: 'assets/img/cody.png',
+          role: 'Hyper'
         }, {
           id: 2,
           name: "Putra",
-          image: 'assets/img/putra.png'
+          image: 'assets/img/putra.png',
+          role: 'Jungle'
+        },{
+          id: 3,
+          name: 'Desmond',
+          image: 'assets/img/desmond.png',
+          role: "Mid"
+        },{
+          id: 4,
+          name: 'Laura',
+          image: 'assets/img/laura.png',
+          role: "Gold"
+        },{
+          id: 5,
+          name: 'Nicole',
+          image: 'assets/img/nicole.png',
+          role: "XP"
         }]
       }, {
         id: 3,
@@ -121,11 +161,28 @@ export class GamesService {
         members: [{
           id: 1,
           name: "Nico",
-          image: "assets/img/nico.png"
+          image: "assets/img/nico.png",
+          role: 'Duelist'
         }, {
           id: 2,
           name: "Reynald",
-          image: "assets/img/reynald.png"
+          image: "assets/img/reynald.png",
+          role: 'Operator'
+        },{
+          id: 3,
+          name: 'Vex',
+          image: 'assets/img/vex.png',
+          role: "Sentinel"
+        },{
+          id: 4,
+          name: 'Nyx',
+          image: 'assets/img/nyx.png',
+          role: "Controller"
+        },{
+          id: 5,
+          name: 'Sucipto',
+          image: 'assets/img/sucipto.png',
+          role: "Initiator"
         }]
       }]
     }

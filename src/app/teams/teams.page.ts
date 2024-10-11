@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GamesService } from '../games.service';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-teams',
@@ -9,10 +10,10 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class TeamsPage implements OnInit {
   index = 0
-  game_list :any[]=[]
-  teams: any[]=[]
+  game_list: any[] = []
+  teams: any[] = []
 
-  constructor(private route: ActivatedRoute,private games : GamesService) { }
+  constructor(private route: ActivatedRoute, private games: GamesService,private router: Router) { }
 
   ngOnInit() {
     this.route.params.subscribe(
@@ -24,4 +25,7 @@ export class TeamsPage implements OnInit {
     this.teams = this.game_list[this.index].teams
   }
 
+  openTeamMembers(teamIndex: number) {
+    this.router.navigate([`/teams/${this.index}/team-members`, this.index, teamIndex]);
+  }
 }

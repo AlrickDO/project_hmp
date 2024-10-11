@@ -13,7 +13,7 @@
       <ion-img [src]="game_list[index].image"></ion-img>
     </ion-item>
 
-    <ion-list lines="full" *ngFor="let team of teams">
+    <ion-list lines="full" *ngFor="let team of teams; let i = index" (click)="openTeamMembers(i)">
       <ion-item>
         <ion-label class="ion-text-center">
           {{team.name}}

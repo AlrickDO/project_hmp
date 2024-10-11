@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: TeamsPage
+  },
+  {
+    path: 'team-members/:gameIndex/:teamIndex',
+    loadChildren: () => import('./team-members/team-members.module').then( m => m.TeamMembersPageModule)
   }
 ];
 
