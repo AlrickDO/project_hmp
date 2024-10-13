@@ -1,0 +1,11 @@
+ion-list {
+    margin-top: 0;
+    padding: 0;
+}
+
+ion-item {
+    --inner-padding-top: 8px;
+    --inner-padding-bottom: 8px;
+    margin-bottom: 0;
+    border-bottom: 1px solid #333;
+}

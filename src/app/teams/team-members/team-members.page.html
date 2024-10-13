@@ -9,13 +9,11 @@
 
 <ion-content [fullscreen]="true">
   <div id="container">
-    <ion-item>
-      <ion-img [src]="game.image"></ion-img>
-    </ion-item>
+    <ion-img id="gameImage" [src]="game.image"></ion-img>
     <ion-list>
-      <ion-item *ngFor="let member of team.members">
+      <ion-item *ngFor="let member of memberList; let i = index" [id]="'memberItem'+i">
         <ion-avatar slot="start">
-            <ion-img [src]="member.image"></ion-img>
+          <ion-img [src]="member.image"></ion-img>
         </ion-avatar>
         <ion-label>
           <h2>{{ member.name }}</h2>

@@ -10,7 +10,7 @@
 <ion-content [fullscreen]="true">
   <div id="content">
     <div id="card-group">
-      <ion-card *ngFor="let game of game_list; let i = index">
+      <ion-card [id]="'gameCard'+i" *ngFor="let game of game_list; let i = index">
         <img [src]="game.image" />
         <ion-card-header>
           <ion-card-title>{{ game.name }}</ion-card-title>
