@@ -1,0 +1,18 @@
+ion-card-title{
+    font-weight: bold;
+}
+
+.venue-image {
+    width: 100%; /* Full width of the card */
+    height: 200px; /* Set a fixed height */
+    object-fit: cover; /* Crop and cover the space uniformly */
+    border-radius: 8px; /* Optional: to match the rounded corners */
+  }
+
+//   .schedule-description {
+//     margin-top: 16px;
+//   }
+
+  .schedule-info {
+    margin-bottom: 16px;
+  }

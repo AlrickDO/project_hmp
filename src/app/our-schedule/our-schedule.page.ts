@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { GamesService } from '../games.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-our-schedule',
@@ -6,16 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./our-schedule.page.scss'],
 })
 export class OurSchedulePage implements OnInit {
+  scheduleData: any[]=[];
 
-  scheduleData = [
-    { date: '05 SEP', event: 'Regional Qualifier - Valorant', team: 'Team Empedu' },
-    { date: '20 SEP', event: 'Grand Final - Mobile Legends', team: 'Team Ginjal' },
-    { date: '29 SEP', event: 'Group Stage - CS2', team: 'Team Jantung' },
-  ];
-
-  constructor() { }
+  constructor(private games : GamesService, private router: Router) { }
 
   ngOnInit() {
+    this.scheduleData = this.games.schedule;
   }
 
 }

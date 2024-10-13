@@ -26,6 +26,6 @@ export class TeamsPage implements OnInit {
   }
 
   openTeamMembers(teamIndex: number) {
-    this.router.navigate([`/teams/${this.index}/team-members`, this.index, teamIndex]);
+    this.router.navigate(['/teams/${this.index}/team-members', this.index, teamIndex]);
   }
 }

@@ -1,0 +1,35 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{selectedSchedule.event}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div id="content">
+    <div id="card-group">
+      <ion-card>
+        <ion-img class="venue-image" [src]="selectedSchedule.image"></ion-img>
+        <ion-card-header>
+          <ion-card-title>{{selectedSchedule.event}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <div class="schedule-info">
+            <div>
+              {{selectedSchedule.date}} - {{selectedSchedule.venue}}
+            </div>
+            <div>
+              {{ selectedSchedule.team }}
+            </div>
+          </div>
+          
+          <div class="schedule-description">
+            {{ selectedSchedule.description }}
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+</ion-content>

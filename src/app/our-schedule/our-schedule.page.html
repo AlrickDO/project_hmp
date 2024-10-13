@@ -7,10 +7,9 @@
   </ion-toolbar>
 </ion-header>
 
-<!-- Nanti isi dibuat pakai data array di loop -->
 <ion-content [fullscreen]="true">
-  <ion-list lines="full" *ngFor="let schedule of scheduleData">
-    <ion-item>
+  <ion-list lines="full" *ngFor="let schedule of scheduleData;let i = index">
+    <ion-item [routerLink]="['/our-schedule/schedule-details', i]">
       <ion-label>
         <h2>{{ schedule.date }}</h2>
         <p>{{ schedule.event }}</p>
