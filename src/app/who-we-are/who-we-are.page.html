@@ -23,7 +23,7 @@
         <ion-label>
           {{likes}}
         </ion-label>
-        <ion-icon name="heart" slot="start"></ion-icon>
+        <ion-icon [ngClass]="{ 'liked-icon': isLiked, 'unliked-icon': !isLiked }" name="heart" slot="start"></ion-icon>
       </ion-button>
     </div>
   </div>
