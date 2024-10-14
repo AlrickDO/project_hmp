@@ -35,10 +35,10 @@ export class AchievementPage implements OnInit {
   }
 
   fadeInFilter() {
-    const avatarElement = document.querySelector('#filter-box') as HTMLElement;
+    const item = document.querySelector('#filter-box') as HTMLElement;
     const animation = this.animationCtrl
       .create()
-      .addElement(avatarElement)
+      .addElement(item)
       .duration(500) 
       .iterations(1) 
       .keyframes([
@@ -71,10 +71,10 @@ export class AchievementPage implements OnInit {
   }
 
   fadeInImage() {
-    const avatarElement = document.querySelector('#game-image') as HTMLElement;
+    const item = document.querySelector('#game-image') as HTMLElement;
     const animation = this.animationCtrl
       .create()
-      .addElement(avatarElement)
+      .addElement(item)
       .duration(350) 
       .iterations(1) 
       .keyframes([

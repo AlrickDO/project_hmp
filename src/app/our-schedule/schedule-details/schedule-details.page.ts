@@ -28,7 +28,7 @@ export class ScheduleDetailsPage implements OnInit {
   }
 
   fadeInCard() {
-    const avatarElement = document.querySelector('#card-group') as HTMLElement;
+    const avatarElement = document.querySelector('#card-schedule') as HTMLElement;
     const animation = this.animationCtrl
       .create()
       .addElement(avatarElement)

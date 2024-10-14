@@ -15,10 +15,11 @@ export class HomePage {
   }
 
   fadeInButton() {
-    const avatarElement = document.querySelector('#mainButtons') as HTMLElement;
+    const item = document.querySelector('#mainButtons') as HTMLElement;
+
     const animation = this.animationCtrl
       .create()
-      .addElement(avatarElement)
+      .addElement(item)
       .duration(600) 
       .iterations(1) 
       .keyframes([
