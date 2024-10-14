@@ -56,7 +56,8 @@ export class TeamMembersPage implements OnInit {
         const animation = this.animationCtrl
           .create()
           .addElement(item)
-          .duration(700) 
+          .duration(700)
+          .delay(500) 
           .iterations(1)
           .keyframes([
             { offset: 0, opacity: '0', transform: 'translateY(20px)' }, 

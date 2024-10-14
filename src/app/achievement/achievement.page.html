@@ -10,10 +10,10 @@
 <ion-content [fullscreen]="true">
   <div id="container">
     <ion-item>
-      <ion-img [src]="game_list[index].image"></ion-img>
+      <ion-img id="game-image" [src]="game_list[index].image"></ion-img>
     </ion-item>
 
-    <ion-item>
+    <ion-item id="filter-box">
       <ion-label>Year</ion-label>
       <ion-select [(ngModel)]="selectedYear" placeholder="Select Year" (ionChange)="filterAchievements()">
         <ion-select-option value="All">All</ion-select-option>
@@ -22,7 +22,7 @@
     </ion-item>
 
     <ion-list>
-      <ion-item *ngFor="let achievement of filteredAchievements">
+      <ion-item [id]="'achievementList'+i" *ngFor="let achievement of filteredAchievements; let i = index">
         <ion-label>
           <h2>{{achievement.name}}</h2>
           <p>{{achievement.team}} - {{achievement.year}}</p>
