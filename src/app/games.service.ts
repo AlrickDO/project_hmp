@@ -1,11 +1,25 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GamesService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+  link = "https://ubaya.xyz/native/160422014/";
+
+  login(username: string, password:string): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const body = new URLSearchParams();
+    body.set('username', username.toString());
+    body.set('password', password.toString());
+    const urlEncodedData = body.toString();
+
+    return this.http.post(this.link + "login.php", urlEncodedData, { headers });
+  }
 
   games = [
     // Sea of Thieves
@@ -187,6 +201,8 @@ export class GamesService {
       }]
     }
   ];
+
+  
 
   schedule = [
     { date: '05 SEP',venue:"Grand Surya Balikpapan", event: 'Regional Qualifier - Valorant', team: 'Team Empedu', image: 'assets/img/sc1.png',
