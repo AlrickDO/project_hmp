@@ -28,7 +28,7 @@ export class AppComponent {
       (response: any) => {
         if (response.result === 'success') {
           alert("success")
-          this.fullname = response.fullname
+          this.fullname = response.fname + ' ' + response.lname
           localStorage.setItem("app_username", this.username)
           localStorage.setItem("app_fullname", this.fullname)
         }

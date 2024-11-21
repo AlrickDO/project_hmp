@@ -9,7 +9,7 @@ import { HttpHeaders } from '@angular/common/http';
 export class GamesService {
 
   constructor(private http: HttpClient) { }
-  link = "https://ubaya.xyz/native/160422014/";
+  link = "https://ubaya.xyz/hybrid/160422014/project/";
 
   login(username: string, password:string): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
@@ -19,6 +19,10 @@ export class GamesService {
     const urlEncodedData = body.toString();
 
     return this.http.post(this.link + "login.php", urlEncodedData, { headers });
+  }
+
+  getGameList(){
+    return this.http.get(this.link + "game_list.php")
   }
 
   games = [
