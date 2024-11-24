@@ -21,6 +21,27 @@ export class GamesService {
     return this.http.post(this.link + "login.php", urlEncodedData, { headers });
   }
 
+  countLikes(){
+    return this.http.get(this.link + "like_count.php")
+  }
+
+  likeStatus(){
+    const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const body = new URLSearchParams();
+    body.set('username', localStorage.getItem("app_username") ?? '');
+    const urlEncodedData = body.toString();
+    return this.http.post(this.link + "like_status.php", urlEncodedData, { headers });
+  }
+
+  likeUpdate(likeInt : number){
+    const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const body = new URLSearchParams();
+    body.set('username', localStorage.getItem("app_username") ?? '');
+    body.set('likeint', likeInt.toString())
+    const urlEncodedData = body.toString();
+    return this.http.post(this.link + "like_update.php", urlEncodedData, { headers });
+  }
+
   getGameList(){
     return this.http.get(this.link + "game_list.php")
   }
