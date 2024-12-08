@@ -12,7 +12,11 @@ export class WhatWePlayPage implements OnInit {
   game_list: any[] = []
 
   ngOnInit() {
-    this.game_list = this.games.games
+    this.games.getGameList().subscribe(
+      (data)=> {
+          this.game_list = data;
+        }
+     );
   }
 
   ionViewDidEnter(){

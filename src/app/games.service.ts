@@ -33,6 +33,87 @@ export class GamesService {
     return this.http.post(this.link + "like_status.php", urlEncodedData, { headers });
   }
 
+  getEventList(): Observable<any>{
+    return this.http.get(this.link + "event_list.php");
+  }
+
+  getEventTeams(eventId :number): Observable<any>{
+    const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const body = new URLSearchParams();
+    body.set('eventId', eventId.toString())
+    const urlEncodedData = body.toString();
+    return this.http.post(this.link + "event_team.php", urlEncodedData, { headers });
+  }
+
+  getTeams(idgame :number): Observable<any>{
+    const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const body = new URLSearchParams();
+    body.set('idgame', idgame.toString())
+    const urlEncodedData = body.toString();
+    return this.http.post(this.link + "team_list.php", urlEncodedData, { headers });
+  }
+
+  getMembers(idteam :number): Observable<any>{
+    const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const body = new URLSearchParams();
+    body.set('idteam', idteam.toString())
+    const urlEncodedData = body.toString();
+    return this.http.post(this.link + "member_list.php", urlEncodedData, { headers });
+  }
+
+  getProposals(): Observable<any>{
+    const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const body = new URLSearchParams();
+    body.set('username', localStorage.getItem("app_username") ?? '');
+    const urlEncodedData = body.toString();
+    return this.http.post(this.link + "proposal_list.php", urlEncodedData, { headers });
+  }
+
+  getAchYears(): Observable<any>{
+    return this.http.get(this.link + "ach_year.php");
+  }
+
+  getTeamData(idteam:number): Observable<any>{
+    const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const body = new URLSearchParams();
+    body.set('idteam', idteam.toString())
+    const urlEncodedData = body.toString();
+    return this.http.post(this.link + "get_team.php", urlEncodedData, { headers });
+  }
+
+  getAchievements(idgame :number): Observable<any>{
+    const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const body = new URLSearchParams();
+    body.set('idgame', idgame.toString())
+    const urlEncodedData = body.toString();
+    return this.http.post(this.link + "ach_list.php", urlEncodedData, { headers });
+  }
+
+  insertProposal(idteam:number, description:string) {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const body = new URLSearchParams();
+    body.set('username', localStorage.getItem("app_username") ?? '');
+    body.set('idteam', idteam.toString());
+    body.set('description', description);
+    const urlEncodedData = body.toString();
+    return this.http.post(
+      this.link + "new_proposal.php", urlEncodedData, { headers });
+
+  }
+
+  getFilteredAchievements(idgame :number,year:number): Observable<any>{
+    const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const body = new URLSearchParams();
+    body.set('idgame', idgame.toString())
+    body.set('year', year.toString())
+    const urlEncodedData = body.toString();
+    return this.http.post(this.link + "ach_filter.php", urlEncodedData, { headers });
+  }
+
+  getEventDetail(id:number){
+    return this.http.get(this.link + "event_detail.php?id=" + id)
+  }
+
   likeUpdate(likeInt : number){
     const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
     const body = new URLSearchParams();
@@ -42,10 +123,11 @@ export class GamesService {
     return this.http.post(this.link + "like_update.php", urlEncodedData, { headers });
   }
 
-  getGameList(){
+  getGameList(): Observable<any>{
     return this.http.get(this.link + "game_list.php")
   }
 
+  //member belum, tahan dulu
   games = [
     // Sea of Thieves
     {
@@ -229,16 +311,7 @@ export class GamesService {
 
   
 
-  schedule = [
-    { date: '05 SEP',venue:"Grand Surya Balikpapan", event: 'Regional Qualifier - Valorant', team: 'Team Empedu', image: 'assets/img/sc1.png',
-      description:"Teams from around the world will face off in strategic battles across iconic maps, blending deadly gunplay with clever abilities. With $500,000 on the line, it's a fight for dominance where one split-second decision can make or break a team's run to victory." },
-    { date: '20 SEP',venue:"Best Western Surabaya", event: 'Grand Final - Mobile Legends', team: 'Team Ginjal', image:'assets/img/sc2.png',
-      description:"In this high-octane 5v5 MOBA, teams must display flawless teamwork, rapid rotations, and smart hero picks to outplay their opponents. The stakes are high, with a $300,000 prize pool, and only the strongest will emerge victorious in this electrifying mobile esports event!" },
-    { date: '29 SEP',venue:"Colosseum California",event: 'Group Stage - Dota 2', team: 'Team Jantung', image: 'assets/img/sc3.png',
-      description:"With intense team fights, mind-blowing strategies, and legendary hero plays, this competition will test every team's coordination and endurance. With a $1 million prize pool and a shot at eternal glory, only the most determined team will survive the climb to the top of the leaderboard!" },
-  ];
-
-  getGames() {
-    return this.games;
-  }
+  // getGames() {
+  //   return this.games;
+  // }
 }

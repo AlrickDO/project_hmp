@@ -22,9 +22,21 @@ export class TeamMembersPage implements OnInit {
       this.teamIndex = params['teamIndex'];
 
       // Get the specific team using the indexes
-      this.game = this.games.games[this.gameIndex];
-      this.team = this.game.teams[this.teamIndex];
-      this.memberList = this.team.members
+      // this.game = this.games.games[this.gameIndex];
+      // this.team = this.game.teams[this.teamIndex];
+      // this.memberList = this.team.members
+      this.games.getTeamData(this.teamIndex).subscribe(
+        (data) => {
+          this.team = data
+        }
+      )
+
+
+      this.games.getMembers(this.teamIndex).subscribe(
+        (data) => {
+          this.memberList = data
+        }
+      )
     });
   }
 

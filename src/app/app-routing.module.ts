@@ -31,6 +31,18 @@ const routes: Routes = [
     path: 'teams/:index',
     loadChildren: () => import('./teams/teams.module').then( m => m.TeamsPageModule)
   },
+  {
+    path: 'apply-team',
+    loadChildren: () => import('./apply-team/apply-team.module').then( m => m.ApplyTeamPageModule)
+  },
+  {
+    path: 'apply-team-new',
+    loadChildren: () => import('./apply-team-new/apply-team-new.module').then( m => m.ApplyTeamNewPageModule)
+  },
+  {
+    path: 'register',
+    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
+  },
 ];
 
 @NgModule({

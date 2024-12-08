@@ -10,11 +10,19 @@ import { AnimationController } from '@ionic/angular';
 })
 export class AchievementPage implements OnInit {
   index = 0
-  game_list: any[] = []
-  selectedYear: string = 'All';
+  // game_list: any[] = []
+  selectedYear: any = 'All';
   availableYears: number[] = [];
-  filteredAchievements: any[] = [];
-  allAchievements: any[] = [];
+  // filteredAchievements: any[] = [];
+  ach_list: any[] = [];
+
+  formatDate(dateString: string): string {
+    const date = new Date(dateString);
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = date.toLocaleString('en-US', { month: 'long' });
+    const year = date.getFullYear();
+    return `${day} ${month} ${year}`;
+  }
 
   constructor(private route: ActivatedRoute, private games: GamesService, private animationCtrl:AnimationController) { }
 
@@ -22,10 +30,22 @@ export class AchievementPage implements OnInit {
     this.route.params.subscribe(
       params => {
         this.index = params['index']
+
+        this.games.getAchievements(params['index']).subscribe(
+          (data) => {
+            this.ach_list = data
+          }
+        )
+
+        this.games.getAchYears().subscribe(
+          (data) => {
+            this.availableYears = data
+          }
+        )
       }
     )
-    this.game_list = this.games.games
-    this.loadAchievements();
+    // this.game_list = this.games.games
+    // this.loadAchievements();
   }
 
   ionViewDidEnter(){
@@ -50,7 +70,7 @@ export class AchievementPage implements OnInit {
   }
 
   animateList() {
-    this.filteredAchievements.forEach((_, i) => {
+    this.ach_list.forEach((_, i) => {
       const item = document.querySelector(`#achievementList${i}`) as HTMLElement;
 
       setTimeout(() => {
@@ -85,30 +105,40 @@ export class AchievementPage implements OnInit {
     animation.play();
   }
 
-  loadAchievements() {
-    this.allAchievements = [];
+  // loadAchievements() {
+  //   this.allAchievements = [];
     
-    const game = this.game_list[this.index];
+  //   const game = this.game_list[this.index];
 
-    game.achievements.forEach((achievement: any) => {
-      this.allAchievements.push(achievement);
-      if (!this.availableYears.includes(achievement.year)) {
-        this.availableYears.push(achievement.year);
-      }
-    });
+  //   game.achievements.forEach((achievement: any) => {
+  //     this.allAchievements.push(achievement);
+  //     if (!this.availableYears.includes(achievement.year)) {
+  //       this.availableYears.push(achievement.year);
+  //     }
+  //   });
 
-    this.availableYears.sort((a, b) => b - a);
-    this.filterAchievements();
-    this.animateList()
-  }
+  //   this.availableYears.sort((a, b) => b - a);
+  //   this.filterAchievements();
+  //   this.animateList()
+  // }
 
   filterAchievements() {
-    if (this.selectedYear === 'All') {
-      this.filteredAchievements = this.allAchievements;
-    } else {
-      this.filteredAchievements = this.allAchievements.filter(
-        achievement => achievement.year === parseInt(this.selectedYear)
-      );
-    }
+    this.route.params.subscribe(
+      params => {
+        if (this.selectedYear === 'All') {
+          this.games.getAchievements(params['index']).subscribe(
+            (data)=> {
+                this.ach_list = data;
+              }
+           );
+        } else {
+          this.games.getFilteredAchievements(params['index'], this.selectedYear).subscribe(
+            (data)=> {
+                this.ach_list = data;
+              }
+           );
+        }
+      }
+    )
   }
 }

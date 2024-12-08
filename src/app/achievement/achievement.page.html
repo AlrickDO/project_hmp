@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-back-button defaultHref="/what-we-play"></ion-back-button>
     </ion-buttons>
     <ion-title>Achievement</ion-title>
   </ion-toolbar>
@@ -10,7 +10,7 @@
 <ion-content [fullscreen]="true">
   <div id="container">
     <ion-item>
-      <ion-img id="game-image" [src]="game_list[index].image"></ion-img>
+      <!-- <ion-img id="game-image" [src]="game_list[index].image"></ion-img> -->
     </ion-item>
 
     <ion-item id="filter-box">
@@ -22,10 +22,10 @@
     </ion-item>
 
     <ion-list>
-      <ion-item [id]="'achievementList'+i" *ngFor="let achievement of filteredAchievements; let i = index">
+      <ion-item [id]="'achievementList'+i" *ngFor="let achievement of ach_list; let i = index">
         <ion-label>
           <h2>{{achievement.name}}</h2>
-          <p>{{achievement.team}} - {{achievement.year}}</p>
+          <p>{{achievement.teamname}} - {{ formatDate(achievement.date) }}</p>
         </ion-label>
       </ion-item>
     </ion-list>

@@ -11,16 +11,40 @@ import { AnimationController } from '@ionic/angular';
 export class ScheduleDetailsPage implements OnInit {
   index = 0;
   selectedSchedule: any;
+  teams: any[]= [];
 
   constructor(private route: ActivatedRoute, private games: GamesService, private animationCtrl: AnimationController) { }
 
   ngOnInit() {
     this.route.params.subscribe(
       params => {
-        this.index = params['index']
+        this.games.getEventDetail(params['index']).subscribe(
+          (data) => {
+            this.selectedSchedule = data
+          }
+        )
+
+        this.games.getEventTeams(params['index']).subscribe(
+          (data) => {
+            this.teams = data
+          }
+        )
       }
     )
-    this.selectedSchedule = this.games.schedule[this.index];
+
+    // this.route.params.subscribe(
+    //   params => {
+        
+    //   }
+    // )
+  }
+
+  formatDate(dateString: string): string {
+    const date = new Date(dateString);
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = date.toLocaleString('en-US', { month: 'long' });
+    const year = date.getFullYear();
+    return `${day} ${month} ${year}`;
   }
 
   ionViewDidEnter() {

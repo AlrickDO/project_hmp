@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-back-button defaultHref="/what-we-play"></ion-back-button>
     </ion-buttons>
     <ion-title>Teams</ion-title>
   </ion-toolbar>
@@ -9,9 +9,10 @@
 
 <ion-content [fullscreen]="true">
   <div id="container">
-    <ion-img id="game-image" [src]="game_list[index].image"></ion-img>
+    <!-- <ion-img id="game-image" [src]="game_list[index].image"></ion-img> -->
 
-    <ion-list lines="full" *ngFor="let team of teams; let i = index" (click)="openTeamMembers(i)" [id]="'teamList'+i">
+    <ion-list lines="full" *ngFor="let team of teams; let i = index" (click)="openTeamMembers(team.idteam)" [id]="'teamList'+i">
+      <!-- team members belum -->
       <ion-item>
         <ion-label class="ion-text-center">
           {{team.name}}

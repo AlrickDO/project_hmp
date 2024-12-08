@@ -9,20 +9,33 @@ import { AnimationController } from '@ionic/angular';
   styleUrls: ['./our-schedule.page.scss'],
 })
 export class OurSchedulePage implements OnInit {
-  scheduleData: any[]=[];
+  events: any[] = [];
 
-  constructor(private games : GamesService, private router: Router, private animationCtrl : AnimationController) { }
+  constructor(private gameService : GamesService, private router: Router, private animationCtrl : AnimationController) { }
 
   ngOnInit() {
-    this.scheduleData = this.games.schedule;
+    // this.scheduleData = this.games.schedule;
+    this.gameService.getEventList().subscribe(
+      (data)=> {
+          this.events = data;
+        }
+     );
   }
 
   ionViewDidEnter() {
     this.animateList()
   }
 
+  formatDate(dateString: string): string {
+    const date = new Date(dateString);
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = date.toLocaleString('en-US', { month: 'long' });
+    const year = date.getFullYear();
+    return `${day} ${month} ${year}`;
+  }
+
   animateList() {
-    this.scheduleData.forEach((_, i) => {
+    this.events.forEach((_, i) => {
       const item = document.querySelector(`#scheduleItem${i}`) as HTMLElement;
 
       setTimeout(() => {

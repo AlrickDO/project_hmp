@@ -1,0 +1,42 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/apply-team"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>New Proposal</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-item>
+      <ion-label>Choose Game</ion-label>
+      <ion-select [(ngModel)]="selectedIdGame" (ionChange)="showTeams()" aria-required="true" placeholder="Select Game">
+        <ion-select-option *ngFor="let game of gameList" value="{{game.idgame}}">{{game.name}}</ion-select-option>
+        <!-- <ion-select-option value="ml">Mobile Legends</ion-select-option> -->
+      </ion-select>
+    </ion-item>
+
+    <!-- Choose Team -->
+    <ion-item>
+      <ion-label>Choose Team</ion-label>
+      <ion-select aria-required="true" [(ngModel)]="selectedIdTeam" placeholder="Select Team">
+        <ion-select-option *ngFor="let team of teamList" [value]="team.idteam">
+          {{team.name}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- Description -->
+    <ion-item>
+      <ion-label position="stacked">Description</ion-label>
+      <ion-textarea [(ngModel)]="desc" placeholder="Tell us the reason why you are good enough to join this team"></ion-textarea>
+    </ion-item>
+
+    <div class="ion-padding">
+      <ion-button (click)="submitProposal()" expand="block" color="primary">Apply Team</ion-button>
+    </div>
+  </ion-card>
+
+</ion-content>

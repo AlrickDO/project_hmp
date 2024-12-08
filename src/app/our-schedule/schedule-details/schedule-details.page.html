@@ -1,9 +1,9 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-back-button defaultHref="/our-schedule"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{selectedSchedule.event}}</ion-title>
+    <ion-title>{{selectedSchedule?.event}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -11,22 +11,24 @@
   <div id="content">
     <div id="card-group">
       <ion-card id="card-schedule">
-        <ion-img class="venue-image" [src]="selectedSchedule.image"></ion-img>
+        <!-- <ion-img class="venue-image" [src]="selectedSchedule.image"></ion-img> -->
         <ion-card-header>
-          <ion-card-title>{{selectedSchedule.event}}</ion-card-title>
+          <ion-card-title>{{selectedSchedule?.name}}</ion-card-title>
         </ion-card-header>
         <ion-card-content>
           <div class="schedule-info">
             <div>
-              {{selectedSchedule.date}} - {{selectedSchedule.venue}}
+              {{formatDate(selectedSchedule?.date)}}
             </div>
             <div>
-              {{ selectedSchedule.team }}
+              <ion-label *ngFor="let team of teams;let i = index">{{ team?.name }}
+                <ion-label *ngIf="i<teams.length - 1">, </ion-label>
+              </ion-label>
             </div>
           </div>
           
           <div class="schedule-description">
-            {{ selectedSchedule.description }}
+            {{ selectedSchedule?.description }}
           </div>
         </ion-card-content>
       </ion-card>
