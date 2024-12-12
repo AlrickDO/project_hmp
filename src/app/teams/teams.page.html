@@ -12,7 +12,6 @@
     <!-- <ion-img id="game-image" [src]="game_list[index].image"></ion-img> -->
 
     <ion-list lines="full" *ngFor="let team of teams; let i = index" (click)="openTeamMembers(team.idteam)" [id]="'teamList'+i">
-      <!-- team members belum -->
       <ion-item>
         <ion-label class="ion-text-center">
           {{team.name}}
