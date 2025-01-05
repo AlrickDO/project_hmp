@@ -9,7 +9,7 @@
 
 <ion-content [fullscreen]="true">
   <div id="container">
-    <!-- <ion-img id="game-image" [src]="game_list[index].image"></ion-img> -->
+    <ion-img id="game-image" [src]="selectedGame?.url"></ion-img>
 
     <ion-list lines="full" *ngFor="let team of teams; let i = index" (click)="openTeamMembers(team.idteam)" [id]="'teamList'+i">
       <ion-item>

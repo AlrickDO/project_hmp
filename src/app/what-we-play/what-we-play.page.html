@@ -11,7 +11,7 @@
   <div id="content">
     <div id="card-group">
       <ion-card [id]="'gameCard'+i" *ngFor="let game of game_list; let i = index">
-        <!-- <img [src]="game.image" /> -->
+        <ion-img [src]="game.url"></ion-img>
         <ion-card-header>
           <ion-card-title>{{ game.name }}</ion-card-title>
         </ion-card-header>

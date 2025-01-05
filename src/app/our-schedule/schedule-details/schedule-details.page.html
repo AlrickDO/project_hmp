@@ -11,7 +11,7 @@
   <div id="content">
     <div id="card-group">
       <ion-card id="card-schedule">
-        <!-- <ion-img class="venue-image" [src]="selectedSchedule.image"></ion-img> -->
+        <ion-img class="venue-image" [src]="selectedSchedule?.url"></ion-img>
         <ion-card-header>
           <ion-card-title>{{selectedSchedule?.name}}</ion-card-title>
         </ion-card-header>
@@ -30,6 +30,12 @@
           <div class="schedule-description">
             {{ selectedSchedule?.description }}
           </div>
+
+          <ion-button slot="end" (click)="btnNotify()">
+            <ion-icon *ngIf="notified==false" name="notifications-outline"></ion-icon>
+            <ion-icon *ngIf="notified==true" name="notifications"></ion-icon>
+            Notify Me
+          </ion-button>
         </ion-card-content>
       </ion-card>
     </div>

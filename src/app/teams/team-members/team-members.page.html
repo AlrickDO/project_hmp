@@ -9,12 +9,12 @@
 
 <ion-content [fullscreen]="true">
   <div id="container">
-    <!-- <ion-img id="gameImage" [src]="game.image"></ion-img> -->
+    <ion-img id="gameImage" [src]="selectedGame?.url"></ion-img>
     <ion-list>
       <ion-item *ngFor="let member of memberList; let i = index" [id]="'memberItem'+i">
-        <!-- <ion-avatar slot="start">
-          <ion-img [src]="member.image"></ion-img>
-        </ion-avatar> -->
+        <ion-avatar slot="start">
+          <ion-img src="https://ubaya.xyz/hybrid/160422014/project/img_member/{{member.idmember}}.png"></ion-img>
+        </ion-avatar>
         <ion-label>
           <h2>{{ member.username }}</h2>
           <p>Role: {{ member.desc }}</p>

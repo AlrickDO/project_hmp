@@ -14,12 +14,19 @@ export class TeamMembersPage implements OnInit {
   team: any;
   game: any;
   memberList: any[] = [];
+  selectedGame:any;
   constructor(private route: ActivatedRoute, private games: GamesService, private animationCtrl:AnimationController) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.gameIndex = params['gameIndex'];
       this.teamIndex = params['teamIndex'];
+
+      this.games.getGame(params['gameIndex']).subscribe(
+        (data) => {
+          this.selectedGame = data
+        }
+      )
 
       // Get the specific team using the indexes
       // this.game = this.games.games[this.gameIndex];

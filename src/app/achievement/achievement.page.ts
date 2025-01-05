@@ -15,6 +15,7 @@ export class AchievementPage implements OnInit {
   availableYears: number[] = [];
   // filteredAchievements: any[] = [];
   ach_list: any[] = [];
+  selectedGame:any;
 
   formatDate(dateString: string): string {
     const date = new Date(dateString);
@@ -34,6 +35,12 @@ export class AchievementPage implements OnInit {
         this.games.getAchievements(params['index']).subscribe(
           (data) => {
             this.ach_list = data
+          }
+        )
+
+        this.games.getGame(params['index']).subscribe(
+          (data) => {
+            this.selectedGame = data
           }
         )
 

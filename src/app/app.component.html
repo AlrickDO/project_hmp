@@ -1,6 +1,7 @@
 <ion-app>
 
   <ion-content *ngIf="!fullname" class="ion-padding center-content">
+    <div *ngIf="regform==false">
       <ion-card class="form-card">
         <ion-item>
           <ion-input [(ngModel)]="username" label="Username" labelPlacement="floating" />
@@ -13,11 +14,41 @@
 
       <div class="ion-text-center mt-2">
         <p>Don't have an account?</p>
-        <ion-button fill="clear">Sign Up</ion-button>
-        <!-- belum bisa -->
-        <h3>SIGN UP NOT IMPLEMENTED YET</h3>
+        <ion-button (click)="setReg()" fill="clear">Sign Up</ion-button>
       </div>
-      
+
+    </div>
+    <div *ngIf="regform==true">
+
+      <ion-card class="form-card">
+        <ion-item>
+          <ion-input [(ngModel)]="reg_fname" label="First Name" labelPlacement="stacked" />
+          <div class="vertical-line"></div>
+          <ion-input [(ngModel)]="reg_lname" label="Last Name" labelPlacement="stacked" />
+        </ion-item>
+        <ion-item>
+          <ion-input [(ngModel)]="reg_uname" label="Username" labelPlacement="stacked" />
+        </ion-item>
+        <ion-item>
+          <ion-input [(ngModel)]="reg_pass" type="password" label="Password" labelPlacement="stacked" />
+        </ion-item>
+        <ion-item>
+          <ion-input [(ngModel)]="reg_conpass" type="password" label="Confirm Password" labelPlacement="stacked" />
+        </ion-item>
+        <ion-item>
+          <ion-checkbox justify="start" (ionChange)="onCheck($event)" labelPlacement="end">I agree with the terms and conditions.</ion-checkbox>
+        </ion-item>
+        <div id="empty"></div>
+        <!-- register here -->
+        <ion-button expand="block" [disabled]="true" *ngIf="terms_check==false" (click)="register()">Register</ion-button>
+        <ion-button expand="block" *ngIf="terms_check==true" (click)="register()">Register</ion-button>
+      </ion-card>
+
+      <div class="ion-text-center mt-2">
+        <p>Already have an account?</p>
+        <ion-button (click)="setReg()" fill="clear">Login</ion-button>
+      </div>
+    </div>
   </ion-content>
 
   <ion-router-outlet *ngIf="fullname" id="main-content"></ion-router-outlet>

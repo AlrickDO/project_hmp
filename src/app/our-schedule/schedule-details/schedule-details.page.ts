@@ -11,7 +11,8 @@ import { AnimationController } from '@ionic/angular';
 export class ScheduleDetailsPage implements OnInit {
   index = 0;
   selectedSchedule: any;
-  teams: any[]= [];
+  teams: any[] = [];
+  notified = false;
 
   constructor(private route: ActivatedRoute, private games: GamesService, private animationCtrl: AnimationController) { }
 
@@ -21,6 +22,17 @@ export class ScheduleDetailsPage implements OnInit {
         this.games.getEventDetail(params['index']).subscribe(
           (data) => {
             this.selectedSchedule = data
+          }
+        )
+
+        this.games.cekNotification(params['index']).subscribe(
+          (response: any) => {
+            if (response.result === 'yes') {
+              this.notified =true;
+            }
+            else {
+              this.notified =false;
+            }
           }
         )
 
@@ -34,9 +46,45 @@ export class ScheduleDetailsPage implements OnInit {
 
     // this.route.params.subscribe(
     //   params => {
-        
+
     //   }
     // )
+  }
+
+  btnNotify() {
+    if(this.notified == false){
+      this.notified = true
+      this.route.params.subscribe(
+        params => {
+          this.games.insertNotification(params['index']).subscribe(
+            (response: any) => {
+              if (response.result === 'success') {
+                alert("Notification Saved");
+              }
+              else{
+                alert('Failed')
+              }
+            }
+          )
+        })
+      
+    }
+    else{
+      this.notified = false
+      this.route.params.subscribe(
+        params => {
+          this.games.deleteNotification(params['index']).subscribe(
+            (response: any) => {
+              if (response.result === 'success') {
+                alert("Notification Deleted");
+              }
+              else{
+                alert('Failed')
+              }
+            }
+          )
+        })
+    }
   }
 
   formatDate(dateString: string): string {

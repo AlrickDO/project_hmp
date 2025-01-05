@@ -12,6 +12,7 @@ import { AnimationController } from '@ionic/angular';
 export class TeamsPage implements OnInit {
   index = 0
   teams: any[] = []
+  selectedGame: any;
 
   constructor(private animationCtrl: AnimationController,private route: ActivatedRoute, private games: GamesService,private router: Router) { }
 
@@ -19,6 +20,12 @@ export class TeamsPage implements OnInit {
     this.route.params.subscribe(
       params => {
         this.index = params['index']
+
+        this.games.getGame(params['index']).subscribe(
+          (data) => {
+            this.selectedGame = data
+          }
+        )
 
         this.games.getTeams(params['index']).subscribe(
           (data) => {

@@ -28,7 +28,9 @@ export class ApplyTeamNewPage implements OnInit {
       (response: any) => {
         if (response.result === 'success') {
           alert("Proposal submitted");
-          this.router.navigate(['/pasta']);
+          this.router.navigate(['/apply-team']).then(() => {
+            window.location.reload();
+          });
         }
         else{
           alert('Submission Failed')
